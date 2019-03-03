@@ -40,12 +40,15 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 			body{
 				background-color: #3E3E3E;
 				color: #FFFFFF;
-				font-family: sans-serif;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 300;
 			}
 			h1{
+				font-weight: 600;
 				text-align: center;
 			}
 			h2{
+				font-weight: 600;
 				cursor: pointer;
 			}
 			.method{
@@ -81,7 +84,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 			});
 			
 			function details(e){
-				if(e.srcElement == "h2"){
+				if(e.srcElement.nodeName == "H2"){
 					var element = e.target.parentElement.querySelector(".details");
 				} else{
 					var element = e.target.parentElement.parentElement.querySelector(".details");
@@ -94,6 +97,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 				}
 			}
 		</script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet">
 	</head>
 	<body>
 		<h1>HTTPTestEndpoint</h1>
