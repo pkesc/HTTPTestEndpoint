@@ -104,7 +104,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/status/[code]<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>Answers with the passed HTTP Status Code. Optinally can the received HTTP Body and Contant-Type Header also be in the answer.</p>
+				<p>AAnswers with the passed HTTP status code. Optionally can the received HTTP body and content-type header also be in the answer.</p>
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>
@@ -131,7 +131,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/delay/[seconds]<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>Waits the passed Seconds and answer 200 OK. Optinally can the received HTTP Body and Contant-Type Header also be in the answer.</p>
+				<p>Waits the passed seconds and answers 200 OK. Optionally can the received HTTP body and content-type header also be in the answer.</p>
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>
@@ -158,7 +158,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/ip<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>Returns the Remote IP Address in the HTTP Body.</p>
+				<p>Returns the remote IP address in the HTTP body.</p>
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>
@@ -185,7 +185,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/userAgent<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>Returns the User-Agent String from the HTTP Header in the HTTP Body.</p>
+				<p>Returns the user-agent string from the HTTP header in the HTTP body.</p>
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>
@@ -212,7 +212,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/basicAuth/[username]/[password]<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>Checks if the Username and Passwort of the Authorization are the same as the one passed in the URL Path. If yes 200 OK and if not 401 Unauthorized will be answered.</p>.
+				<p>Checks if the username and password of the authorization are the same as the one passed in the URL path. If yes 200 OK and if not 401 unauthorized will be answered.</p>.
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>
@@ -239,7 +239,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/file/[filename]<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>Returns the Content of the passed File in the HTTP Body. The File must be in the same Directory the HTTPTestEndpoint is.</p>
+				<p>Returns the content of the passed file in the HTTP body. The file must be in the same directory the HTTPTestEndpoint is.</p>
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>

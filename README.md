@@ -1,16 +1,16 @@
 # HTTPTestEndpoint
 
-You need to Implement a special API or want to Test how your Code acts when it receives a special HTTP Reason or HTTP Body ? Than this Tool is what you are searching for.
+You need to implement a special API or want to test how your code acts when it receives a special HTTP reason or HTTP body? Then this tool is what you are searching for.
 
 | URL Path                         | Description                                                  |
 | -------------------------------- | ------------------------------------------------------------ |
-| /status/[code]                   | Answers with the passed HTTP Status Code. Optinally can the received HTTP Body and Contant-Type Header also be in the answer. |
-| /delay/[seconds]                 | Waits the passed Seconds and answer 200 OK. Optinally can the received HTTP Body and Contant-Type Header also be in the answer. |
-| /ip                              | Returns the Remote IP Address in the HTTP Body.              |
-| /userAgent                       | Returns the User-Agent String from the HTTP Header in the HTTP Body. |
-| /basicAuth/[username]/[password] | Checks if the Username and Passwort of the Authorization are the same as the one passed in the URL Path. If yes 200 OK and if not 401 Unauthorized will be answered. |
-| /file/[filename]                 | Returns the Content of the passed File in the HTTP Body. The File must be in the same Directory the HTTPTestEndpoint is. |
+| /status/[code]                   | Answers with the passed HTTP status code. Optionally can the received HTTP body and content-type header also be in the answer. |
+| /delay/[seconds]                 | Waits the passed seconds and answers 200 OK. Optionally can the received HTTP body and content-type header also be in the answer. |
+| /ip                              | Returns the remote IP address in the HTTP body. |
+| /userAgent                       | Returns the user-agent string from the HTTP header in the HTTP body. |
+| /basicAuth/[username]/[password] | Checks if the username and password of the authorization are the same as the one passed in the URL path. If yes 200 OK and if not 401 unauthorized will be answered. |
+| /file/[filename]                 | Returns the content of the passed file in the HTTP body. The file must be in the same directory the HTTPTestEndpoint is. |
 
-For more Details start the Tool and open http://localhost:8080 in your Browser to see the detailed Help Page.
+For more details start the tool and open [http://localhost:8080](http://localhost:8080/) in your browser to see the detailed help page.
 
 ![](assets/helpPage.png)
