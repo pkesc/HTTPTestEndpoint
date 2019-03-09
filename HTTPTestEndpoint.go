@@ -12,8 +12,13 @@ import (
 	"time"
 )
 
+var (
+	verbose *bool
+)
+
 func main() {
 	port := flag.Int("p", 8080, "The Port the Server listens")
+	verbose = flag.Bool("v", false, "increase verbosity")
 
 	flag.Parse()
 
@@ -33,12 +38,16 @@ func main() {
 }
 
 func helpHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	helpText := `<html>
 	<head>
 		<title>HTTPTestEndpoint</title>
 		<style>
 			body{
-				background-color: #3E3E3E;
+				background-color: #313131;
 				color: #FFFFFF;
 				font-family: 'Open Sans', sans-serif;
 				font-weight: 300;
@@ -91,6 +100,10 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 				}
 			
 				if(element.hidden == true){
+					document.querySelectorAll(".details:not([hidden])").forEach(function(e){
+						e.hidden = true;
+					});
+
 					element.hidden = false;
 				} else{
 					element.hidden = true;
@@ -104,7 +117,7 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 		<div class="method">
 			<h2>/status/[code]<div class="down"></div></h2>
 			<div class="details" hidden>
-				<p>AAnswers with the passed HTTP status code. Optionally can the received HTTP body and content-type header also be in the answer.</p>
+				<p>Answers with the passed HTTP status code. Optionally can the received HTTP body and content-type header also be in the answer.</p>
 				<h3>Parameters</h3>
 				<table rules="all">
 					<tr>
@@ -264,6 +277,10 @@ func helpHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func statusHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	path := strings.Split(r.URL.Path, "/")
 
 	if path[2] == "" {
@@ -293,6 +310,10 @@ func statusHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func delayHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	path := strings.Split(r.URL.Path, "/")
 
 	if path[2] == "" {
@@ -318,6 +339,10 @@ func delayHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func ipHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	ip, _, err := net.SplitHostPort(r.RemoteAddr)
 
 	if err != nil {
@@ -355,6 +380,10 @@ func ipHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func userAgentHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	userAgentString := r.Header.Get("User-Agent")
 
 	var body string
@@ -376,6 +405,10 @@ func userAgentHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func basicAuthHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	path := strings.Split(r.URL.Path, "/")
 
 	if path[2] == "" || path[3] == "" {
@@ -411,6 +444,10 @@ func basicAuthHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func fileHandler(w http.ResponseWriter, r *http.Request) {
+	if *verbose {
+		printVerbose(r.URL.String())
+	}
+
 	path := strings.Split(r.URL.Path, "/")
 
 	if path[2] == "" {
@@ -428,6 +465,12 @@ func fileHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Write(fileData)
+}
+
+func printVerbose(url string) {
+	currentTime := time.Now()
+
+	fmt.Printf("%s %s\n", currentTime.Format("2006.01.02 15:04:05"), url)
 }
 
 func addHeader(w http.ResponseWriter, r *http.Request) {
